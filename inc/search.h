@@ -16,6 +16,11 @@ void init(){
 	big5["leopard"] = leopards;
 }
 
+ucm::json getAll(){
+	// This should return all the data we have
+	return big5;
+}
+
 ucm::json search(std::string key){
 	// Provide your code here
 	// This function should return a specific animal category, specified by key
@@ -25,13 +30,10 @@ ucm::json search(std::string key){
 	if(big5.contains(key)){
 		resp["animal"] = big5[key];
 	}
-	else{
+	if(!big5.contains(key)){
 		resp["animal"] = "Not Found";
 	}
 	return resp;
 }
 
-ucm::json getAll(){
-	// This should return all the data we have
-	return big5;
-}
+
