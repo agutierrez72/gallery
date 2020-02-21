@@ -15,19 +15,21 @@ int main(int argc, char** argv){
 
     server.route("/search", [&](const request& req, response& res){
         // Provide your code here. 
-        ucm::json temp;
-        temp["message"] = "It works!";
-        //res.sendJSON(temp);
+        // ucm::json temp;
+        // temp["message"] = "It works!";
+        // //res.sendJSON(temp);
+        ucm::json resp;
 
         if(req.has_params({"q"})){
             std::string q = req.url_params.get("q");
 
-            ucm::json resp = search(q);
+            resp = search(q);
 
-            res.sendJSON(resp);
         }
-
-
+        else{
+            resp = getAll();
+        }
+        res.sendJSON(resp);
     });
 
     server.run();

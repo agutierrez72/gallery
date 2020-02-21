@@ -33,4 +33,5 @@ ucm::json search(std::string key){
 
 ucm::json getAll(){
 	// This should return all the data we have
+	return big5;
 }
