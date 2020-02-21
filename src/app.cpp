@@ -22,12 +22,14 @@ int main(int argc, char** argv){
 
         if(req.has_params({"q"})){
             std::string q = req.url_params.get("q");
-
-            resp = search(q);
-
+            if(q != "")
+                resp = search(q);
+            else{
+                resp = getAll();
+            }
         }
         else{
-            resp = getAll();
+            res.sendError400();
         }
         res.sendJSON(resp);
     });
