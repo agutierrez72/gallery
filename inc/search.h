@@ -20,6 +20,15 @@ ucm::json search(std::string key){
 	// Provide your code here
 	// This function should return a specific animal category, specified by key
 	// The function should return an appropriate message if the key is not found
+	ucm::json resp;
+	
+	if(big5.contains(key)){
+		resp["animal"] = big5[key];
+	}
+	else{
+		resp["animal"] = "Not Found";
+	}
+	return resp;
 }
 
 ucm::json getAll(){

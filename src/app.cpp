@@ -17,7 +17,17 @@ int main(int argc, char** argv){
         // Provide your code here. 
         ucm::json temp;
         temp["message"] = "It works!";
-        res.sendJSON(temp);
+        //res.sendJSON(temp);
+
+        if(req.has_params({"q"})){
+            std::string q = req.url_params.get("q");
+
+            ucm::json resp = search(q);
+
+            res.sendJSON(resp);
+        }
+
+
     });
 
     server.run();
