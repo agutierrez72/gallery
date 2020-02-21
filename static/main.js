@@ -5,7 +5,28 @@ $(document).ready(function(){
 	$("#search").click(function(){
 		var find = $("#animal").val();
 
-		var message ="Find " + find;
-		alert(message);
+		console.log(find);
+		//alert(find);
+
+		$.get("/search", {q:find}, function(response){
+			var data = JSON.parse(response);
+			var htmlCode= "";
+			console.log(response);
+
+			console.log(data);
+
+			for(var i in data){
+				htmlCode +="<div class='row'>";
+				var theList = data[i];	
+				for(var j in theList){
+					htmlCode += "<div class='col'><img style='width:200px' src='images/" + theList[j] +"'></div>";
+					console.log(theList[j]);
+				}
+				htmlCode += "</div>"
+				
+			$("#area").html(htmlCode);
+			}
+			console.log(htmlCode);
+		});
 	});
 });
