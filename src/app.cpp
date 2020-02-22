@@ -24,12 +24,9 @@ int main(int argc, char** argv){
             std::string q = req.url_params.get("q");
             if(q != "")
                 resp = search(q);
-            // else{
-            //     resp = getAll();
-            // }
-        }
-        else{
-            resp = getAll();
+            else{
+                resp = getAll();
+            }
         }
         res.sendJSON(resp);
     });
