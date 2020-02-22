@@ -2,11 +2,14 @@ $(document).ready(function(){
 	// The entire database should be displayed when your app starts
 	// The Search button should be programmed to hit the /search endpoint along with the query string from the text box
 
+
+
 	$("#search").click(function(){
 		var find = $("#animal").val();
 
 		console.log(find);
 		//alert(find);
+
 
 		$.get("/search", {q:find}, function(response){
 			var data = JSON.parse(response);
@@ -14,6 +17,16 @@ $(document).ready(function(){
 			console.log(response);
 
 			console.log(data);
+
+			console.log(data["animals"]);
+
+			if(data["animal"]== "Not Found"){
+				$("#area").html("Not Found");
+	
+				console.log("hi");
+				return;
+			
+			}
 
 			for(var i in data){
 				htmlCode +="<div class='row'>";
